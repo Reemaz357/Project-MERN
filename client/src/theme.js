@@ -6,26 +6,34 @@ const config = {
 };
 
 const theme = extendTheme({
+ 
   config,
   styles: {
     global: (props) => ({
       body: {
-        bg: props.colorMode === 'dark' ? 'gray.900' : 'gray.50',
+        bg: props.colorMode === 'dark' ? '  linear-gradient(45deg,rgba(2, 0, 36, 1) 25%, rgba(9, 9, 121, 1) 100%)':'radial-gradient(circle,rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%)',
+        backgroundImage: props.colorMode === 'dark'
+          ? "url('/dark.jpeg')"
+          : "url('/light.jpg')",
+        backgroundSize: 'cover',
+        backgroundRepeat: 'repeat',
+        backgroundPosition: 'center',
+        minHeight: '100vh'
       },
     }),
   },
   colors: {
     brand: {
-      50: '#f0f9ff',
-      100: '#e0f2fe',
-      200: '#bae6fd',
-      300: '#7dd3fc',
-      400: '#38bdf8',
-      500: '#0ea5e9',
-      600: '#0284c7',
-      700: '#0369a1',
-      800: '#075985',
-      900: '#0c4a6e',
+      50: '#582f0e',
+      100: '#7f4f24',
+      200: '#936639',
+      300: '#a68a64',
+      400: '#bda34dff',
+      500: '#c2c5aa',
+      600: '#4f610fff',
+      700: '#656d4a',
+      800: '#414833',
+      900: '#333d29',
     },
   },
   components: {

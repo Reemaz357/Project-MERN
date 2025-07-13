@@ -70,11 +70,11 @@ const Signup = () => {
       p={4}
     >
       <Box
-        bg={bg}
+        bg={'transparent'}
         p={8}
-        borderRadius="xl"
-        border="1px"
-        borderColor={borderColor}
+        borderRadius="2xl"
+        border="2px"
+        borderColor="#383c34ff"
         shadow="lg"
         w="full"
         maxW="md"
@@ -109,7 +109,7 @@ const Signup = () => {
               </FormControl>
               
               <FormControl>
-                <FormLabel>Email</FormLabel>
+                <FormLabel> Email</FormLabel>
                 <Input
                   type="email"
                   value={email}

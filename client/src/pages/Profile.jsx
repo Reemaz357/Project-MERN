@@ -99,11 +99,11 @@ const Profile = () => {
   return (
     <VStack spacing={6} align="stretch">
       <Box
-        bg={bg}
+        bg={'transparent'}
         p={6}
         borderRadius="xl"
-        border="1px"
-        borderColor={borderColor}
+        border="2px"
+        borderColor='#8a956598'
         shadow="sm"
       >
         <VStack spacing={4}>
@@ -114,36 +114,40 @@ const Profile = () => {
           />
           
           <VStack spacing={2}>
-            <Text fontSize="2xl" fontWeight="bold">
+            <Text fontFamily="extrabold" fontSize="2xl" fontWeight="bold">
               {profileUser.fullName}
             </Text>
             <Text color="gray.500">@{profileUser.username}</Text>
             {profileUser.bio && (
-              <Text textAlign="center" maxW="md">
+              <Text textAlign="center" maxW="md" mt={4} color="gray.700">
                 {profileUser.bio}
               </Text>
             )}
           </VStack>
           
           <StatGroup>
-            <Stat textAlign="center">
-              <StatNumber>{posts.length}</StatNumber>
+            <Stat textAlign="center" mr={4} >
+              <StatNumber fontStyle="lato">{posts.length}</StatNumber>
               <StatLabel>Posts</StatLabel>
             </Stat>
-            <Stat textAlign="center">
-              <StatNumber>{profileUser.followersCount}</StatNumber>
+            <Stat textAlign="center" mr={4}>
+              <StatNumber fontStyle="lato">{profileUser.followersCount}</StatNumber>
               <StatLabel>Followers</StatLabel>
             </Stat>
-            <Stat textAlign="center">
-              <StatNumber>{profileUser.followingCount}</StatNumber>
+            <Stat textAlign="center" mr={4}>
+              <StatNumber fontStyle="lato">{profileUser.followingCount}</StatNumber>
               <StatLabel>Following</StatLabel>
             </Stat>
           </StatGroup>
           
           {user && user.id !== profileUser.id && (
             <Button
-              colorScheme={isFollowing ? 'gray' : 'brand'}
+              colorScheme={isFollowing ? 'green' : 'brand'}
               variant={isFollowing ? 'outline' : 'solid'}
+               size="sm"      
+              borderRadius="full"
+              leftIcon={isFollowing ? <CheckIcon /> : <AddIcon />}
+              _hover={{ opacity: 0.85 }}
               onClick={handleFollow}
               isLoading={followLoading}
             >
@@ -160,7 +164,7 @@ const Profile = () => {
       </Text>
       
       {posts.length === 0 ? (
-        <Text textAlign="center" color="gray.500" py={8}>
+        <Text textAlign="center" color="gray.500" py={8} >
           No posts yet.
         </Text>
       ) : (

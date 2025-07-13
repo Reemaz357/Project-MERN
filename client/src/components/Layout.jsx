@@ -113,25 +113,26 @@ const Layout = ({ children }) => {
   return (
     <Box minH="100vh">
       <Box
-        bg={bg}
+        bg={'transparent'}
         borderBottom="1px"
         borderColor={borderColor}
         position="sticky"
         top={0}
         zIndex={10}
-        backdropFilter="blur(8px)"
-        backgroundColor={useColorModeValue('rgba(255, 255, 255, 0.8)', 'rgba(26, 32, 44, 0.8)')}
+        backdropFilter="blur(10px)"
+        backgroundColor={useColorModeValue('rgba(154, 175, 123, 0.5).', 'rgba(52, 75, 92, 0.8)')}
       >
         <Container maxW="container.md">
           <Flex h={16} alignItems="center" justifyContent="space-between">
-            <Heading
+            <Heading 
+            fontFamily={'Helvetica Neue'}
               size="lg"
               bgGradient="linear(to-r, brand.400, brand.600)"
               bgClip="text"
               cursor="pointer"
               onClick={() => navigate('/')}
             >
-              SocialApp
+             BUZZNET
             </Heading>
 
             {user && (
@@ -150,12 +151,12 @@ const Layout = ({ children }) => {
                       <IconButton
                         aria-label="Notifications"
                         icon={<FiBell />}
-                        variant="ghost"
+                        variant="ghost" colorScheme='green'
                         onClick={fetchNotifications}
                       />
                       {unreadCount > 0 && (
                         <Badge
-                          colorScheme="red"
+                          colorScheme="green"
                           borderRadius="full"
                           position="absolute"
                           top="-1"
@@ -193,10 +194,10 @@ const Layout = ({ children }) => {
                               p={3}
                               borderBottomWidth="1px"
                               borderColor={borderColor}
-                              _hover={{ bg: useColorModeValue('gray.50', 'gray.700') }}
+                              _hover={{ bg: useColorModeValue('green.50', 'green.800') }}
                               cursor="pointer"
                               onClick={() => handleNotificationClick(notification)}
-                              bg={!notification.read ? useColorModeValue('gray.50', 'gray.700') : 'transparent'}
+                              bg={!notification.read ? useColorModeValue('#fdffeaa0', '#41433896') : 'transparent'}
                             >
                               <HStack>
                                 <Avatar size="sm" src={notification.sender?.avatarUrl} name={notification.sender?.fullName} />
@@ -226,7 +227,7 @@ const Layout = ({ children }) => {
                   aria-label="Toggle color mode"
                   icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
                   onClick={toggleColorMode}
-                  variant="ghost"
+                  variant="ghost" 
                 />
 
                 <Menu>
@@ -252,7 +253,7 @@ const Layout = ({ children }) => {
                   onClick={toggleColorMode}
                   variant="ghost"
                 />
-                <Button variant="solid" colorScheme="brand" onClick={() => navigate('/login')}>
+                <Button variant="solid" color="'#4f610fff" onClick={() => navigate('/login')}>
                   Sign In
                 </Button>
               </HStack>

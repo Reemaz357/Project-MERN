@@ -12,6 +12,7 @@ import {
   Image,
   Collapse,
   useToast,
+  ThemeProvider,
 } from '@chakra-ui/react';
 import { FiHeart, FiMessageCircle, FiSend, FiUserPlus, FiUserCheck } from 'react-icons/fi';
 import { FaHeart } from 'react-icons/fa';
@@ -124,22 +125,22 @@ const PostCard = ({ post, onUpdate }) => {
 
   return (
     <Box
-      bg={bg}
+      bg="#7476633f"
       p={6}
       borderRadius="xl"
-      border="1px"
-      borderColor={borderColor}
-      shadow="sm"
-      _hover={{ shadow: 'md' }}
+      border="10px"
+      borderColor={{ borderColor:"#333d29"}}
+      shadow="md"
+      _hover={{ shadow:"rgba(106, 117, 85, 0.76) 0px 2px 8px "}}
       transition="all 0.2s"
-    >
-      <VStack align="stretch" spacing={4}>
+     >
+      <VStack align="stretch" spacing={5}>
         <HStack justify="space-between">
           <HStack>
             <Avatar
               size="md"
-              name={post.author.fullName}
-              src={post.author.avatarUrl}
+              name={post.author?.fullName}
+              src={post.author?.avatarUrl}
               cursor="pointer"
               onClick={() => navigate(`/profile/${post.author._id}`)}
             />
@@ -149,20 +150,21 @@ const PostCard = ({ post, onUpdate }) => {
                 cursor="pointer"
                 onClick={() => navigate(`/profile/${post.author._id}`)}
               >
-                {post.author.fullName}
+                {post.author?.fullName}
               </Text>
               <Text fontSize="sm" color="gray.500">
-                @{post.author.username}
+                @{post.author?.username}
               </Text>
             </VStack>
           </HStack>
+          
           
           {/* Follow button - only show if not the current user */}
           {user && post.author && user.id !== post.author._id && (
             <Button
               leftIcon={isFollowing ? <FiUserCheck /> : <FiUserPlus />}
               size="sm"
-              colorScheme={isFollowing ? "gray" : "brand"}
+              colorScheme={isFollowing ? "green": "brand"}
               variant={isFollowing ? "outline" : "solid"}
               onClick={handleFollow}
               isLoading={followLoading}
@@ -172,7 +174,7 @@ const PostCard = ({ post, onUpdate }) => {
           )}
         </HStack>
 
-        <Text fontSize="md" lineHeight="tall">
+        <Text fontSize="sm" lineHeight="tall">
           {post.content}
         </Text>
 
@@ -192,7 +194,7 @@ const PostCard = ({ post, onUpdate }) => {
               aria-label="Like post"
               icon={isLiked ? <FaHeart color="red" /> : <FiHeart />}
               variant="ghost"
-              size="sm"
+              size="md"
               onClick={handleLike}
             />
             <Text fontSize="sm">{likesCount}</Text>
@@ -235,16 +237,16 @@ const PostCard = ({ post, onUpdate }) => {
               <HStack key={comment._id} align="start">
                 <Avatar
                   size="sm"
-                  name={comment.author.fullName}
-                  src={comment.author.avatarUrl}
+                  name={comment.author?.fullName}
+                  src={comment.author?.avatarUrl}
                 />
                 <VStack align="start" spacing={1} flex={1}>
                   <HStack>
                     <Text fontSize="sm" fontWeight="bold">
-                      {comment.author.fullName}
+                      {comment.author?.fullName}
                     </Text>
-                    <Text fontSize="xs" color="gray.500">
-                      @{comment.author.username}
+                    <Text fontSize="xs" color="green.500">
+                      @{comment.author?.username}
                     </Text>
                   </HStack>
                   <Text fontSize="sm">{comment.content}</Text>
@@ -257,5 +259,4 @@ const PostCard = ({ post, onUpdate }) => {
     </Box>
   );
 };
-
 export default PostCard;

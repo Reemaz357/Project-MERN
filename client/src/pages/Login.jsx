@@ -30,7 +30,7 @@ const Login = () => {
   const navigate = useNavigate();
   const toast = useToast();
   
-  const bg = useColorModeValue('white', 'gray.800');
+  const bg = useColorModeValue('#f2ffe5ff', '#283840ff');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
 
   const handleSubmit = async (e) => {

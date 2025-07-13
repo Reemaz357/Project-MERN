@@ -131,12 +131,15 @@ const CreatePost = ({ onPostCreated }) => {
 
   return (
     <Box
-      bg={bg}
+      bg="#71947884"
       p={6}
       borderRadius="xl"
       border="1px"
       borderColor={borderColor}
-      shadow="sm"
+      shadow="md"
+      _hover={{ shadow: "rgba(83, 88, 75, 0.76) 0px 2px 8px" }}
+      transition="all 0.2s"
+      
     >
       <VStack spacing={4}>
         <HStack align="start" w="full">
